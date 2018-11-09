@@ -1,1 +1,114 @@
-<h1> this will be the search page! :D </h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Knowledge Base</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="../dist/css/admin.css">
+
+
+
+
+</head>
+
+<body>
+
+  <div id="wrapper">
+  	<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  		<div class="navbar-header">
+	    </div>
+
+
+  	</nav>
+
+  	<div id="page-wrapper">
+  		<div class="container search-section">
+  			<div class="row no-gutters">
+	  			<div class="col-auto mx-auto">
+					{% load static %}
+	  				<a class="navbar-brand" href="index.html"><img src="{% static "knowledgeSearch/btc_logo.png" %}"></a>
+	  			</div>
+	  			<div class="col mx-auto search-form">
+					<input class="form-control border-secondary border-right-0 rounded-0" type="search" placeholder="What is the question?" id="search-input">
+				</div>
+				<div class="col-auto mx-auto search-form">
+			        <button class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right " type="button">
+			            <i class="fa fa-search"></i>
+			        </button>
+		    	</div>
+
+  			</div>
+  			
+  		</div>
+
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-lg-8 questions-section">
+  					<div class="card">
+  						<div class="card-header">
+  							What is a brain tumour?
+  						</div>
+  						<div class="card-body">
+  							A brain tumour is not good.
+  						</div>
+  					</div>
+
+  					<div class="card">
+  						<div class="card-header">
+  							What is treatment?
+  						</div>
+  						<div class="card-body">
+  							Treatment is good.
+  						</div>
+  					</div>
+  				</div>
+  				<div class="col-lg-4 contacts-section">
+  					<div class="card">
+  						<div class="card-header">
+  							Contacts
+  						</div>
+  						<div class="card-body">
+  							<div class="list-group">
+  								<a href="#" class="list-group-item">
+                                    <i class="fas fa-user"></i> Edward Stables
+                                    <p class="text-muted">
+                                    	Knows all about brain tumours.
+                                    </p>
+                                    <p>
+                                    	020 1231 2312
+                                    </p>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fas fa-user"></i> Fangfang Hu
+                                    <p class="text-muted">
+                                    	Knows all the treatments.
+                                    </p>
+                                    <p>
+                                    	020 3213 2132
+                                    </p>
+                                </a>
+
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+
+  	</div>
+  </div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
