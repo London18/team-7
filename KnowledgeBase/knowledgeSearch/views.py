@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from knowledgeSearch.models import Article, Contact, Ticket
 from datetime import datetime, timedelta
-from .forms import NewQuestion 
+from .forms import NewQuestion, Search
 from random import randint
 # Create your views here.
 
@@ -17,42 +17,42 @@ class MainView(View):
    
     def get(self, request):
         form = NewQuestion()
+        search = Search()
         args = {
            "article_list" : self.article_list,
            "contact_list" : self.contact_list,
-            "form" : form
+            "form" : form,
+            "search": search
         }
         return render(request, self.template_name, args)
     
     def post(self, request):
         form = NewQuestion(request.POST)
+        search = Search(request.POST)
+        a = None
         if form.is_valid():
             firstName = form.cleaned_data['firstName']
             lastName = form.cleaned_data['lastName']
             question = form.cleaned_data['question']
             answer = form.cleaned_data['answer']
+            a = Article(title = question, body = answer)
+        if search.is_valid():
+            searched = search.cleaned_data['keywords']
+            print(searched)
         args = {
             "article_list" : self.article_list,
             "contact_list" : self.contact_list,
-            "form" : form
+            "form" : form,
+            "search": search
         }
-        a = Article(title = question, body = answer)
-        a.save()
+
+        if a != None:
+            print("Added")
+            a.save()
+
         return render(request, self.template_name,args)
 
 """
-def index(request):
-    article_list = Article.objects.all()
-    contact_list = Contact.objects.all()
-    args = {
-        "article_list" : article_list,
-        "contact_list" : contact_list,
-        "form" : NewQuestion
-        }
-
-
-    return render(request, 'knowledgeSearch/index.html', args)
-
 def ticket(request):
     #delete all entries older than 4 hours
     Ticket.objects.filter(submitTime__gte = datetime.now()-timedelta(minutes = 1)).delete()
