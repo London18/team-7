@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="{% static "knowledgeSearch/assets/css/dashboard.css" %}" rel="stylesheet" />
+
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+  <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
 </head>
 
 <body class="">
@@ -147,7 +150,82 @@
           <div class="row">
             
             <div class="col-lg-6 col-md-12">
-              
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                  <div class="card card-stats">
+                    <div class="card-header card-header-danger card-header-icon">
+                      <div class="card-icon">
+                        <i class="material-icons">question_answer</i>
+                      </div>
+                      <p class="card-category">Number of Questions</p>
+                      <h3 class="card-title">100</h3>
+                    </div>
+                    <div class="card-footer">
+                      <div class="stats">
+                        <i class="material-icons">update</i> Just Updated
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                  <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                      <div class="card-icon">
+                        <i class="fa fa-user"></i>
+                      </div>
+                      <p class="card-category">Number of Contacts</p>
+                      <h3 class="card-title">105</h3>
+                    </div>
+                    <div class="card-footer">
+                      <div class="stats">
+                        <i class="material-icons">update</i> Just Updated
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 col-md-12">
+                  <div class="card ">
+                    <div class="card-header card-header-warning ">
+                      <h4 class="card-title ">Recently Added Questions</h4>
+                      <p class="card-category">Check out what's been added!</p>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-hover">
+                          <thead class=" text-primary">
+                            <th style="width: 25%">
+                              Question
+                            </th>
+                            <th style="width: 50%">
+                              Answer
+                            </th>
+                            <th style="width: 25%">
+                              Contributor
+                            </th>
+                          </thead>
+                          <tbody>
+                            {% for article in article_list %}
+                              <tr>
+                                <td>
+                                  {{article.title}}
+                                </td>
+                                <td>
+                                  {{article.body}}
+                                </td>
+                                <td>
+                                  {{article.contributor}}
+                                </td>
+                              </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="col-lg-6 col-md-12">
               <div class="card">
@@ -230,8 +308,6 @@
   <script src="{% static "knowledgeSearch/assets/js/plugins/perfect-scrollbar.jquery.min.js" %}"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chartist JS -->
-  <script src="{% static "knowledgeSearch/assets/js/plugins/chartist.min.js" %}"></script>
   <!--  Notifications Plugin    -->
   <script src="{% static "knowledgeSearch/assets/js/plugins/bootstrap-notify.js" %}"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
