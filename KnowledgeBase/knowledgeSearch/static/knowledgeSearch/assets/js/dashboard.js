@@ -310,9 +310,9 @@ md = {
       /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
       var dataWebsiteViewsChart = {
-        labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+        labels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
         series: [
-          [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
+          [542, 443, 320, 780, 553, 453, 326]
 
         ]
       };
