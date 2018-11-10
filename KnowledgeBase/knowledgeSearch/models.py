@@ -5,3 +5,9 @@ from django.db import models
 class Article(models.Model):
     title = models.TextField()
     body = models.TextField()
+
+class Contact(models.Model):
+    name = models.TextField()
+    expertise = models.TextField()
+    number = models.IntegerField()
+    
