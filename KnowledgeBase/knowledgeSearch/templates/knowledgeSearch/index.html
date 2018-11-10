@@ -27,9 +27,8 @@
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo">
-        <a href="" class="simple-text logo-normal">
-          Knowledge Base
-        </a>
+        {% load static %}
+        <img src="{% static "knowledgeSearch/assets/img/btc_logo_2x.png" %}" width="50%" class="center">
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -38,6 +37,30 @@
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
+          </li>
+          <li class="nav-item ">
+            <div class="card">
+                <div class="card-header card-header-info">
+                  <i class="material-icons" style="color: white;">person</i> 
+                  Contacts
+                </div>
+                <div class="card-body">
+                  <div class="list-group">
+                    {% for contact in contact_list %}
+                      <a href="#" class="list-group-item" style="border: 0.5px grey dotted;">
+                        {{contact.name}}
+                        <p class="text-muted">
+                          {{contact.expertise}}
+                        </p>
+                        <p>
+                          {{contact.number}}
+                        </p>
+                      </a>
+
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
           </li>
           <!-- your sidebar here -->
         </ul>
@@ -60,7 +83,7 @@
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="#pablo">
-                  <i class="material-icons">notifications</i> Notifications
+                  <i class="material-icons">notifications</i>
                 </a>
               </li>
               <!-- your navbar here -->
@@ -122,9 +145,13 @@
             
           </div>
           <div class="row">
+            
+            <div class="col-lg-6 col-md-12">
+              
+            </div>
             <div class="col-lg-6 col-md-12">
               <div class="card">
-                <div class="card-header card-header-primary">
+                <div class="card-header card-header-success">
                   <h4 class="card-title">Contribute Your Questions</h4>
                   <p class="card-category">Can't find your question? Help us build our Knowledge Base!</p>
                 </div>
@@ -166,38 +193,6 @@
                     <button type="submit" class="btn btn-primary pull-right">Submit</button>
                     <div class="clearfix"></div>
                   </form>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-12">
-              <div class="card">
-                <div class="card-header card-header-warning">
-                  <h4 class="card-title">Contacts</h4>
-                  <p class="card-category">Need to redirect a question to someone?</p>
-                </div>
-                <div class="card-body table-responsive">
-                  <table class="table table-hover">
-                    <thead class="text-warning">
-                      <th>Name</th>
-                      <th style="width: 40%">Expertise</th>
-                      <th>Number</th>
-                    </thead>
-                    <tbody>
-                        {% for contact in contact_list %}
-                          <tr>
-                            <td>
-                              {{contact.name}}
-                            </td>
-                            <td>
-                              {{contact.expertise}}
-                            </td>
-                            <td>
-                              {{contact.number}}
-                            </td>
-                          </tr>
-                        {% endfor %}
-                      </tbody>
-                  </table>
                 </div>
               </div>
             </div>

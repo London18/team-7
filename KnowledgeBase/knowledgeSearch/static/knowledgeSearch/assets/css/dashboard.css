@@ -13029,3 +13029,9 @@ Copyright (c) 2015 Daniel Eden
 .content .search-field {
   padding: 0 2.5rem 0 2.5rem;
 }
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
