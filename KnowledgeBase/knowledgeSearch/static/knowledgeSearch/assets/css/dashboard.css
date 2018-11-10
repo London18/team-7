@@ -13025,3 +13025,7 @@ Copyright (c) 2015 Daniel Eden
     display: none !important; } }
 
 /*# sourceMappingURL=material-dashboard.css.map */
+
+.content .search-field {
+  padding: 0 2.5rem 0 2.5rem;
+}
