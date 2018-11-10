@@ -30,6 +30,12 @@ class MainView(View):
         form = NewQuestion(request.POST)
         search = Search(request.POST)
         a = None
+        args = {
+            "article_list" : self.article_list,
+            "contact_list" : self.contact_list,
+            "form" : form,
+            "search": search
+        }
         if form.is_valid():
             firstName = form.cleaned_data['firstName']
             lastName = form.cleaned_data['lastName']
@@ -38,16 +44,14 @@ class MainView(View):
             a = Article(title = question, body = answer)
         if search.is_valid():
             searched = search.cleaned_data['keywords']
-            print(searched)
-        args = {
-            "article_list" : self.article_list,
-            "contact_list" : self.contact_list,
-            "form" : form,
-            "search": search
-        }
+            print("searching for [" + str(searched) + "]")
+            args['article_list']= Article.objects.filter(title__contains=str(searched) )
+            return render(request, self.template_name, args)
+        
 
         if a != None:
             print("Added")
+            args['article_list']= Article.objects.all()
             a.save()
 
         return render(request, self.template_name,args)
