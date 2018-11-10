@@ -1,7 +1,9 @@
 from django.urls import path
-from . import views
+from .views import MainView
+
 
 urlpatterns = [
-    path('index', views.index),
-    path('add', views.add),
+    path('index/', MainView.as_view(), name = 'main-view'),
+    #path('index', views.index),
+   # path('ticket', views.ticket),
 ]
