@@ -2,74 +2,75 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from knowledgeSearch.models import Article, Contact, Ticket
 from datetime import datetime, timedelta
-from .forms import NewQuestion, Search
+from .forms import NewQuestion, Search, Notify
 from random import randint
-# Create your views here.
-
-
-
 from django.views import View
 
 class MainView(View):
     template_name = 'knowledgeSearch/index.html'
-    article_list = Article.objects.all()
-    contact_list = Contact.objects.all()
-   
+
+
     def get(self, request):
+        hour = datetime.now() - timedelta(minutes = 1)
+        Ticket.objects.filter(submitTime__lte = hour).delete()
+
+        article_list = Article.objects.all()
+        contact_list = Contact.objects.all()
+        ticket_list = Ticket.objects.all()
+
         form = NewQuestion()
         search = Search()
+        makenotify = Notify()
         args = {
-           "article_list" : self.article_list,
-           "contact_list" : self.contact_list,
+           "article_list" : article_list,
+           "contact_list" : contact_list,
+           "notification_list" : ticket_list,
             "form" : form,
-            "search": search
+            "search": search,
+            "makenotify": makenotify
         }
         return render(request, self.template_name, args)
     
     def post(self, request):
+        hour = datetime.now() - timedelta(minutes = 1)
+        Ticket.objects.filter(submitTime__lte = hour).delete()
+        
         form = NewQuestion(request.POST)
         search = Search(request.POST)
-        a = None
+        makenotify = Notify(request.POST)
+
+        
+        article_list = Article.objects.all()
+        contact_list = Contact.objects.all()
+        ticket_list = Ticket.objects.all()
+
         args = {
-            "article_list" : self.article_list,
-            "contact_list" : self.contact_list,
+            "article_list" : article_list,
+            "contact_list" : contact_list,
+            "notification_list" : ticket_list,
             "form" : form,
-            "search": search
+            "search": search,
+            "makenotify": makenotify
         }
         if form.is_valid():
-            firstName = form.cleaned_data['firstName']
-            lastName = form.cleaned_data['lastName']
             question = form.cleaned_data['question']
             answer = form.cleaned_data['answer']
             a = Article(title = question, body = answer)
-        if search.is_valid():
-            searched = search.cleaned_data['keywords']
-            print("searching for [" + str(searched) + "]")
-            args['article_list']= Article.objects.filter(title__contains=str(searched) )
-            return render(request, self.template_name, args)
-        
-
-        if a != None:
-            print("Added")
             args['article_list']= Article.objects.all()
             a.save()
+        if search.is_valid():
+            searched = search.cleaned_data['keywords']
+            args['article_list']= Article.objects.filter(title__contains=str(searched) )
+            return render(request, self.template_name, args)
+        if makenotify.is_valid():
+            notificiation = makenotify.cleaned_data['note']
+            rand = 0
+            while True:
+                rand = randint(1,10000)
+                if Ticket.objects.filter(number = rand).count() == 0:
+                    break
+            p = Ticket(number = rand, notes = notificiation)
+            p.save()
 
         return render(request, self.template_name,args)
 
-"""
-def ticket(request):
-    #delete all entries older than 4 hours
-    Ticket.objects.filter(submitTime__gte = datetime.now()-timedelta(minutes = 1)).delete()
-    index = 0
-    while True:
-        index = randint(1, 10000)
-        if Ticket.objects.filter(number = index).exists():
-            pass
-        else:
-            break
-    message = "This is a temporary thing which is going to be changed when the other stuff works"
-    print(Ticket.objects.all())
-    #p = Ticket(number = index, notes = message)
-    #p.save()
-    return HttpResponse("<h1> your ticket has been added</h1>") 
-    """

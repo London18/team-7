@@ -49,9 +49,19 @@
                 </div>
                 <div class="card-body">
                   <div class="list-group">
+                    <form method = "post">
+                        {% csrf_token %}
+                        {{makenotify.as_p}}
+                        <input type = "submit" value = "Submit">                  
+                    </form>
+                  </div>
+                  
+                  <div class="list-group">
                     {% for notification in notification_list %}
                       <a href="#" class="list-group-item" style="border: 0.5px grey dotted;">
-                        {{notification.title}}
+                        <p style="color: orange;">{{notification.number}}</p>
+                        {{notification.notes}}
+                        
                       </a>
 
                     {% endfor %}

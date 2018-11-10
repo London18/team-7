@@ -15,4 +15,3 @@ class Ticket(models.Model):
     submitTime = models.DateTimeField(default=datetime.now, blank=True)
     number = models.IntegerField()
     notes = models.TextField()
-    
