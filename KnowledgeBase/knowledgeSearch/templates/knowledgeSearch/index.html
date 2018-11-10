@@ -178,7 +178,6 @@
                 </div>
               </div>
             </div>
-            
           </div>
           <div class="row">
             
@@ -197,6 +196,60 @@
                       <div class="stats">
                         <i class="material-icons">update</i> Just Updated
                       </div>
+                      <div class="stats">
+                        <a href="" data-toggle="modal" data-target="#allQuestionsModal">View All</a>
+                      </div>
+                      <div class="modal fade" id="allQuestionsModal" role="dialog">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title"></h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="card ">
+                                    <div class="card-header card-header-primary ">
+                                      <h4 class="card-title ">All Questions</h4>
+                                      <p class="card-category"></p>
+                                    </div>
+                                    <div class="card-body">
+                                      <div class="table-responsive">
+                                        <table class="table table-hover" style="text-align: left;">
+                                          <thead class=" text-primary">
+                                            <th style="width: 30%">
+                                              Question
+                                            </th>
+                                            <th style="width: 70%">
+                                              Answer
+                                            </th>
+                                          </thead>
+                                          <tbody>
+                                            {% for article in article_list %}
+                                              <tr>
+                                                <td>
+                                                  {{article.title}}
+                                                </td>
+                                                <td>
+                                                  {{article.body}}
+                                                </td>
+                                              </tr>
+                                            {% endfor %}
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -212,6 +265,67 @@
                     <div class="card-footer">
                       <div class="stats">
                         <i class="material-icons">update</i> Just Updated
+
+                      </div>
+                      <div class="stats">
+                        <a href="" data-toggle="modal" data-target="#allContactsModal">View All</a>
+                      </div>
+                      <div class="modal fade" id="allContactsModal" role="dialog">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title"></h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="card ">
+                                    <div class="card-header card-header-info ">
+                                      <h4 class="card-title ">All Contacts</h4>
+                                      <p class="card-category"></p>
+                                    </div>
+                                    <div class="card-body">
+                                      <div class="table-responsive">
+                                        <table class="table table-hover" style="text-align: left;">
+                                          <thead class=" text-primary">
+                                            <th style="width: 30%; color: #87cefa;">
+                                              Name
+                                            </th>
+                                            <th style="width: 50%; color: #87cefa;">
+                                              Expertise
+                                            </th>
+                                            <th style="width: 20%; color: #87cefa;">
+                                              Number
+                                            </th>
+                                          </thead>
+                                          <tbody>
+                                            {% for contact in contacts_list %}
+                                              <tr>
+                                                <td>
+                                                  {{contact.name}}
+                                                </td>
+                                                <td>
+                                                  {{contact.expertise}}
+                                                </td>
+                                                <td>
+                                                  {{contact.number}}
+                                                </td>
+                                              </tr>
+                                            {% endfor %}
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
