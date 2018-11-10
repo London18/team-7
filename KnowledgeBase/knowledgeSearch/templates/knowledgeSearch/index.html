@@ -54,7 +54,7 @@
   		<div class="container">
   			<div class="row">
   				<div class="col-lg-8 questions-section">
-					{% for article in article %}
+					{% for article in article_list %}
 						<div class="card">
 							<div class="card-header">
 								{{article.title}}
@@ -64,23 +64,6 @@
 							</div>
 						</div>
 					{% endfor %}
-  					<div class="card">
-  						<div class="card-header">
-  							What is a brain tumour?
-  						</div>
-  						<div class="card-body">
-  							A brain tumour is not good.
-  						</div>
-  					</div>
-
-  					<div class="card">
-  						<div class="card-header">
-  							What is treatment?
-  						</div>
-  						<div class="card-body">
-  							Treatment is good.
-  						</div>
-  					</div>
   				</div>
   				<div class="col-lg-4 contacts-section">
   					<div class="card">
