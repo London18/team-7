@@ -11,7 +11,7 @@ class MainView(View):
 
 
     def get(self, request):
-        hour = datetime.now() - timedelta(minutes = 1)
+        hour = datetime.now() - timedelta(seconds = 15)
         Ticket.objects.filter(submitTime__lte = hour).delete()
 
         article_list = Article.objects.all()
@@ -32,9 +32,9 @@ class MainView(View):
         return render(request, self.template_name, args)
     
     def post(self, request):
-        hour = datetime.now() - timedelta(minutes = 1)
+        hour = datetime.now() - timedelta(seconds = 15)
         Ticket.objects.filter(submitTime__lte = hour).delete()
-        
+
         form = NewQuestion(request.POST)
         search = Search(request.POST)
         makenotify = Notify(request.POST)
